@@ -1,0 +1,13 @@
+.movies-wrapper {
+  display: flex;
+  justify-content: center;
+  background-color: #EEEEEE;
+  height: 100vh;
+  overflow: scroll;
+}
+.movies-container {
+  margin: 5vh;
+  background-color: white;
+  border-radius: 7px;
+  overflow: scroll;
+}
