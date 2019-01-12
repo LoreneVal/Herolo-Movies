@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { MatCardModule } from '@angular/material/card';
 
 
 import { AppComponent } from './app.component';
@@ -17,14 +19,15 @@ import { MovieEditComponent } from './movies/movie-edit/movie-edit.component';
     MoviesComponent,
     HeaderComponent,
     MovieItemComponent,
-    MovieEditComponent
+    MovieEditComponent,
   ],
   imports: [
     BrowserModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

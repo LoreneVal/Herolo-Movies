@@ -1,16 +1,17 @@
-<div class="row movie-container">
+<!--<div class="row movie-container">
   <div class="col-xs-12">
 
-    <div class="col-md-2 col-xs-12">
-      <img [src]="movie.imagePath" alt="{{movie.title}}" class="img-responsive" style="max-height: 200px; border-radius: 3px;">
+    <div class="col-xs-2">
+      <img [src]="movie.Poster" alt="{{movie.Title}}" class="img-responsive"
+            style="max-height: 200px; border-radius: 3px;">
     </div>
 
-    <div class="col-md-10 col-xs-12">
+    <div class="col-xs-10">
       <div class="movie-details">
-        <h1>{{movie.title}} ({{movie.year}})</h1>
-        <p><em>{{movie.director}}</em></p>
-        <p>{{movie.runtime}} min</p>
-        <p>{{movie.genre}}</p>
+        <h1>{{movie.Title}} ({{movie.Year}})</h1>
+        <p><em>{{movie.Director}}</em></p>
+        <p>{{movie.Runtime}} min</p>
+        <p>{{movie.Genre}}</p>
       </div>
       <div class="row">
         <div class="col-xs-12">
@@ -19,6 +20,27 @@
         </div>
       </div>
     </div>
-    </div>
+  </div>
 
+</div>-->
+
+<div class="row movie-container">
+  <div class="col-xs-12">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{movie.Title}} ({{movie.Year}})</mat-card-title>
+        <mat-card-subtitle>{{movie.Director}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-lg-image [src]="movie.Poster" alt="{{movie.Title}}" class="img-responsive"
+            style="max-height: 200px; border-radius: 3px;">
+      <mat-card-content>
+        <p>{{movie.Runtime}}</p>
+        <p>{{movie.Genre}}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>EDIT</button>
+        <button mat-button>DELETE</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
 </div>

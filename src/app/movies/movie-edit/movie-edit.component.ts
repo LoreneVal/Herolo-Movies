@@ -11,7 +11,6 @@ import { MovieService } from '../movie.service';
   styleUrls: ['./movie-edit.component.css']
 })
 export class MovieEditComponent implements OnInit {
-  id = this.movieService.getMovies().length + 1
   movies: Movie[];
   //editMode = false;
   movieForm: FormGroup;
@@ -40,7 +39,7 @@ export class MovieEditComponent implements OnInit {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
     this.movieForm = new FormGroup({
-      'id': new FormControl({value: this.id, disabled: true}),
+      'id': new FormControl({value: this.movieService.generateId(), disabled: true}),
       'title': new FormControl(null, Validators.required),
       'year': new FormControl(null),
       'runtime': new FormControl(null),
