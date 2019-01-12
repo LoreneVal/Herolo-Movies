@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgbdModalBasic } from './modal-basic/modal-basic';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
@@ -18,7 +17,6 @@ import { MovieEditComponent } from './movies/movie-edit/movie-edit.component';
     MoviesComponent,
     HeaderComponent,
     MovieItemComponent,
-    NgbdModalBasic,
     MovieEditComponent
   ],
   imports: [
