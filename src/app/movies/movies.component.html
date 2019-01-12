@@ -1,5 +1,17 @@
-<div class="row">
-  <div class="col-xs-12">
-    <app-movie-list></app-movie-list>
+<div class="row search-form">
+  <div class="col-xs-6">
+    <form>
+      <label for="search">Search</label>
+      <input type="text" id="search" class="form-control" placeholder="ex: superman">
+      <button>Submit</button>
+    </form>
+  </div>
+  <div class="col-xs-6">
+    <button class="btn btn-primary" (click)="openAddForm()">+ Add A Movie</button>
   </div>
 </div>
+
+<app-movie-item
+  *ngFor="let movieItem of movies"
+  [movie]="movieItem">
+</app-movie-item>

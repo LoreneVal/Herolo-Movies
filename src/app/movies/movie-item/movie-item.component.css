@@ -5,3 +5,7 @@
 .movie-details h1 {
   font-size: 22px;
 }
+.movieMouseOver {
+  background-color: blue;
+  color: white;
+}
