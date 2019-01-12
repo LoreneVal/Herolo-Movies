@@ -1,3 +1,9 @@
 .search-form {
   margin-bottom: 10px;
+  position: relative;
+}
+.modal-div {
+  position: absolute;
+  top: 1px;
+  right:1px;
 }
