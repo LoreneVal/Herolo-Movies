@@ -1,25 +1,28 @@
 <div class="row search-form">
-  <div class="col-xs-12">
-    <form>
+  <div class="col-6">
+    <form (ngSubmit)="onSearchSubmit()">
       <label for="search">Search</label>
       <input type="text" id="search" class="form-control"
             placeholder="ex: superman" [formControl]="searchForm">
       <button type="submit">Submit</button>
     </form>
+    <p>{{error}}</p>
   </div>
-  <div class="col-xs-12 modal-div">
-    <app-movie-edit></app-movie-edit>
+  <div class="col-6 modal-div">
+    <app-add-movie></app-add-movie>
   </div>
 </div>
-<div class="row" *ngIf="!hasSearch; else result">
+<div *ngIf="!hasSearch; else searchResult">
   <div *ngFor="let movieItem of movies">
     <app-movie-item [movie]="movieItem"></app-movie-item>
   </div>
-  <div *ngFor="let movieItem of addedMovies">
-   <app-movie-item [movie]="movieItem"></app-movie-item>
  </div>
+ <div *ngFor="let movieItem of addedMovies">
+    <app-movie-item [movie]="movieItem"></app-movie-item>
 </div>
 
-<ng-template #result>
-  <app-movie-item [movie]="searchResult"></app-movie-item>
+<ng-template #searchResult>
+
+    <app-movie-item [movie]="movies" *ngIf="error == ''"></app-movie-item>
+
 </ng-template>

@@ -1,11 +1,11 @@
 export class Movie {
   constructor(
-    public id: number,
+    public imdbID: string,
     public title:string,
     public year:number,
     public runtime:number,
     public genre:string,
     public director:string,
-    public imagePath:string
+    public poster:string
   ) {}
 }

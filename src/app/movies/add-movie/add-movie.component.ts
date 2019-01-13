@@ -1,21 +1,17 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Movie } from '../movie.model';
 import { MovieService } from '../movie.service';
 
 
 @Component({
-  selector: 'app-movie-edit',
-  templateUrl: './movie-edit.component.html',
-  styleUrls: ['./movie-edit.component.css']
+  selector: 'app-add-movie',
+  templateUrl: './add-movie.component.html',
+  styleUrls: ['./add-movie.component.css']
 })
-export class MovieEditComponent implements OnInit {
-
+export class AddMovieComponent implements OnInit {
   //editMode = false;
   movieForm: FormGroup;
-  index: number;
-  @Input() movie: Movie
 
   constructor(private modalService: NgbModal, private movieService: MovieService) {}
 
@@ -24,8 +20,7 @@ export class MovieEditComponent implements OnInit {
   }
 
   onSubmit() {
-    this.index = this.movieService.findIndexByID(this.movie.imdbID);
-    this.movieService.updateMovie(this.index, this.movieForm.value);
+    this.movieService.addMovie(this.movieForm.value);
   }
   closeResult: string;
 
@@ -36,13 +31,13 @@ export class MovieEditComponent implements OnInit {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
     this.movieForm = new FormGroup({
-      'imdbID': new FormControl({value: this.movie.imdbID, disabled: true}),
-      'title': new FormControl(this.movie.title, Validators.required),
-      'year': new FormControl(this.movie.year),
-      'runtime': new FormControl(this.movie.runtime),
-      'genre': new FormControl(this.movie.genre),
-      'director': new FormControl(this.movie.director),
-      'poster': new FormControl(this.movie.poster)
+      'imdbID': new FormControl({value: this.movieService.generateId(), disabled: true}),
+      'title': new FormControl(null, Validators.required),
+      'year': new FormControl(null),
+      'runtime': new FormControl(null),
+      'genre': new FormControl(null),
+      'director': new FormControl(null),
+      'poster': new FormControl(null)
     });
   }
 

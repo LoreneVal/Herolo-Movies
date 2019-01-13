@@ -4,6 +4,7 @@
 }
 .modal-div {
   position: absolute;
-  top: 1px;
-  right:1px;
+  top: 5px;
+  right:5vw;
+  width: 20vw;
 }

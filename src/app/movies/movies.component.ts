@@ -2,45 +2,45 @@ import { Component, OnInit } from '@angular/core';
 import { Movie } from './movie.model';
 import { MovieService } from './movie.service';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
-
+import { DataStorageService } from '../shared/data-storage.service';
 
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.css'],
-  providers: [MovieService]
+  providers: [MovieService, DataStorageService]
 })
 export class MoviesComponent implements OnInit {
   movies: Movie[];
   addedMovies: Movie[];
   searchForm = new FormControl('');
-  searchResults: Movie[];
-
+  searchResults: Movie[] = [];
   hasSearch = false;
+  error = '';
+
   noMovieFound = false;
 
-  constructor(private movieService: MovieService){}
+  constructor(private movieService: MovieService, private dataStorageService: DataStorageService){}
 
   ngOnInit() {
-    this.addedMovies = this.movieService.movies;
+    this.hasSearch = false;
+    this.dataStorageService.fetchMovies();
+    this.movieService.moviesChanged.subscribe(
+      (movies: Movie[]) => {
+        this.movies = movies;
+      }
+    );
+  }
 
-    this.movieService.getMovies().subscribe((movies: Movie[]) => {
-      this.movies = movies;
-    });
-
-    this.searchForm.valueChanges
-      .subscribe((value: string) => {
-    if (value.length) {
-      this.hasSearch = true;
-      this.movieService.getMovies(value)
-        .toPromise()
-        .then(data => {
-          this.searchResults = data;
-        });
-    } else {
-      this.hasSearch = false;
-    }
-  });
+  onSearchSubmit() {
+    this.hasSearch = true;
+    this.dataStorageService.fetchMovies(this.searchForm.value);
+    this.movieService.moviesChanged.subscribe(
+      (movies: Movie[]) => {
+        this.movies = movies;
+      }
+    );
+    this.error = this.dataStorageService.error;
+    console.log(this.movieService.movies);
   }
 }

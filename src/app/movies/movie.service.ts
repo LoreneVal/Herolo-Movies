@@ -1,47 +1,18 @@
 import { Movie } from './movie.model';
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { forkJoin } from 'rxjs';
+import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable()
 export class MovieService {
   movies: Movie[] = [];
+  moviesChanged = new EventEmitter<Movie[]>();
 
-  constructor(private http: HttpClient){}
-  //movieChanged = new Subject<Movie[]>();
-    //movies: Movie[] = [
-    //new Movie(
-      //1,
-      //'Crazy, Stupid, Love.',
-      //2011,
-      //125,
-      //"Drama",
-      //"John Requa",
-      //"https://m.media-amazon.com/images/M/MV5BMTg2MjkwMTM0NF5BMl5BanBnXkFtZTcwMzc4NDg2NQ@@._V1_SX300.jpg"
-    //),
-    //new Movie(
-      //2,
-      //'Love Actually',
-      //2003,
-      //130,
-      //"Romance",
-      //"Richard Curtis",
-      //"https://m.media-amazon.com/images/M/MV5BMTY4NjQ5NDc0Nl5BMl5BanBnXkFtZTYwNjk5NDM3._V1_SX300.jpg"
-    //)
-  //];
+  setMovies(movies: Movie[]) {
+    this.movies = movies;
+    this.moviesChanged.emit(this.movies);
+  }
 
-  getMovies(query?: string) {
-    if(!query) {
-      const keywords = ['men', 'black', 'love', 'house', 'tiny', 'story', 'manhattan'];
-      const apiRequests = [];
-      for(let i = 0; i < keywords.length; i++) {
-        apiRequests.push(this.http.get(this.getMovieUrl(keywords[i])));
-      }
-      return forkJoin(apiRequests);
-    } else {
-      return this.http.get<Movie[]>(this.getMovieUrl(query));
-    }
-    //return this.movies;
+  seeMovies() {
+    return this.movies;
   }
 
   getLastId() {
@@ -50,8 +21,27 @@ export class MovieService {
 
   addMovie(movie: Movie) {
     this.movies.push(movie);
-    //this.movieChanged.next(this.movies.slice());
+    //this.moviesChanged.emit(this.movies);
   }
+
+  findIndexByID(imdbID: string) {
+    for(let i = 0; i < this.movies.length; i++) {
+      if(this.movies[i].imdbID == imdbID) {
+        return i
+      }
+    }
+  }
+
+  updateMovie(index: number, newMovie: Movie) {
+    this.movies[index] = newMovie;
+    this.moviesChanged.emit(this.movies);
+  }
+
+  deleteMovie(index: number) {
+    this.movies.splice(index, 1);
+    this.moviesChanged.emit(this.movies);
+  }
+
 
   generateId(): string {
     let text = '';
@@ -63,7 +53,4 @@ export class MovieService {
     return text;
   }
 
-  private getMovieUrl(query: string): string {
-    return `http://www.omdbapi.com/?t=${query}&apikey=6d4e8e6`;
-  }
 }

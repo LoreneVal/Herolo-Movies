@@ -28,7 +28,9 @@
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "src/app/shared/toCamel.js"
+            ],
           },
           "configurations": {
             "production": {

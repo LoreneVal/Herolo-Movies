@@ -3,14 +3,16 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { MatCardModule } from '@angular/material/card';
-
 
 import { AppComponent } from './app.component';
 import { MoviesComponent } from './movies/movies.component';
 import { HeaderComponent } from './header/header.component';
 import { MovieItemComponent } from './movies/movie-item/movie-item.component';
 import { MovieEditComponent } from './movies/movie-edit/movie-edit.component';
+import { AddMovieComponent } from './movies/add-movie/add-movie.component';
+
+import { MovieService } from './movies/movie.service';
+import { DataStorageService } from './shared/data-storage.service';
 
 
 @NgModule({
@@ -20,16 +22,16 @@ import { MovieEditComponent } from './movies/movie-edit/movie-edit.component';
     HeaderComponent,
     MovieItemComponent,
     MovieEditComponent,
+    AddMovieComponent,
   ],
   imports: [
     BrowserModule,
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    MatCardModule
+    HttpClientModule
   ],
-  providers: [],
+  providers: [MovieService, DataStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
