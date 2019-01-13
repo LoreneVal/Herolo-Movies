@@ -49,9 +49,9 @@ export class DataStorageService {
   }
 
   private getMovieUrlWithoutQuery(query: string): string {
-    return `http://www.omdbapi.com/?t=${query}&apikey=6d4e8e6`;
+    return `https://www.omdbapi.com/?t=${query}&apikey=6d4e8e6`;
   }
   private getMovieUrlWithQuery(query: string): string {
-    return `http://www.omdbapi.com/?type=movie&s=${query}&apikey=ad37881b`;
+    return `https://www.omdbapi.com/?type=movie&s=${query}&apikey=ad37881b`;
   }
 }
