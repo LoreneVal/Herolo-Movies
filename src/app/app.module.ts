@@ -14,7 +14,6 @@ import { AddMovieComponent } from './movies/add-movie/add-movie.component';
 import { MovieService } from './movies/movie.service';
 import { DataStorageService } from './shared/data-storage.service';
 import { DeleteMovieComponent } from './movies/delete-movie/delete-movie.component';
-import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -25,8 +24,7 @@ import { HomeComponent } from './home/home.component';
     MovieItemComponent,
     MovieEditComponent,
     AddMovieComponent,
-    DeleteMovieComponent,
-    HomeComponent
+    DeleteMovieComponent
   ],
   imports: [
     BrowserModule,
