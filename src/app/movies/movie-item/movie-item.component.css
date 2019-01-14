@@ -1,16 +1,37 @@
 .movie-container {
-  margin-bottom: 8px;
+  margin-bottom: 25px;
   padding: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  background-color: white;
+  border-radius: 9px;
 }
 .movie-details h1 {
   font-size: 22px;
-  color: #A9A9A9;
+  color: #404040;
+  font-family: 'Open Sans', sans-serif;
 }
+.movie-details p {
+  font-size: 15px;
+  margin-bottom: 5px;
+  color: #404040;
+  font-family: 'Open Sans', sans-serif;
+}
+#runtime {
+  color: #B0B0B0;
+  font-style: italic;
+}
+#genre{
+  color: #B0B0B0;
+  margin-bottom: 10px;
+}
+
 .movieMouseOver {
   background-color: blue;
   color: white;
 }
 .movie-btn {
+
   border: none;
   background-color: white;
   color: #DB5461;
@@ -28,6 +49,7 @@
   /* Add shadows to create the "card" effect */
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
+
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -38,4 +60,5 @@
 /* Add some padding inside the card container */
 .card-container {
   padding: 2px 16px;
+
 }

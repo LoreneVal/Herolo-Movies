@@ -14,7 +14,7 @@
 
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Add a Movie</h4>
+    <h4 class="modal-title" id="modal-basic-title" style="color: #404040;">Add a Movie</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -99,13 +99,16 @@
           formControlName="poster">
         </div>
       </div>
-      <div *ngIf="movieForm.valid">
-        <button type="submit" class="btn btn-success">Save</button>
+      <div class="buttons-form-div">
+        <button type="button" class="movie-btn" (click)="modal.dismiss('canceled')">Cancel</button>
+        <div *ngIf="movieForm.valid">
+          <button type="submit" class="movie-btn-ok">Save</button>
+        </div>
+        <div *ngIf="!movieForm.valid">
+          <button type="button" class="movie-btn-ok" (click)="open(errorpopup)">Save</button>
+        </div>
+
       </div>
-      <div *ngIf="!movieForm.valid">
-        <button type="button" class="btn btn-success" (click)="open(errorpopup)">Save</button>
-      </div>
-      <button type="button" class="btn btn-danger" (click)="modal.dismiss('canceled')">Cancel</button>
 
     </form>
   </div>

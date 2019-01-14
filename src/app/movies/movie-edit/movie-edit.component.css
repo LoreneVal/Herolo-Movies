@@ -1,7 +1,7 @@
 .movie-btn {
- border: none;
+  border: none;
   background-color: white;
-  font-size: 25px;
+  font-size: 20px;
   color: #DB5461;
   border-radius: 5px;
   margin: 10px;
@@ -10,4 +10,34 @@
 .movie-btn:hover {
   background-color: #DB5461;
   color: white;
+}
+
+.movie-btn-cancel {
+  border: 1px solid #DB5461;
+  background-color: white;
+  padding: 5px 20px;
+  color: #DB5461;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.movie-btn-cancel:hover {
+  background-color: #DB5461;
+  color: white;
+}
+.buttons-form-div {
+  display: flex;
+  justify-content: flex-end;
+}
+.movie-btn-ok {
+  border: 1px solid #DB5461;
+  background-color: #DB5461;
+  padding: 5px 20px;
+  color: white;
+  border-radius: 5px;
+  margin: 10px;
+}
+.movie-btn-ok:hover {
+  background-color: white;
+  color: #DB5461;
 }

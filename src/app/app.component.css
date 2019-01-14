@@ -8,7 +8,9 @@
 .movies-container {
   margin: 0 10vw;
   padding: 50px;
-  background-color: white;
-  border-radius: 7px;
+  background-color: #EFEFEF;
   overflow: scroll;
+  border-right: 3px solid #DB5461;
+  border-left: 3px solid #DB5461;
+  box-shadow: 0 4px 8px 0 rgba(219, 84, 97, 0.5);
 }

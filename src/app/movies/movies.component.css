@@ -1,10 +1,33 @@
 .search-form {
   margin-bottom: 10px;
-  position: relative;
+  display: flex;
+  justify-content: space-between;
 }
-.modal-div {
-  position: absolute;
-  top: 5px;
-  right:5vw;
-  width: 20vw;
+
+form.search-form-input input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid #DB5461;
+  float: left;
+  width: 70%;
+  background: white;
+  box-shadow: 0 4px 8px 0 rgba(219, 84, 97, 0.2);
+}
+
+form.search-form-input button {
+  float: left;
+  width: 12%;
+  padding: 6px;
+  background: #DB5461;
+  color: white;
+  font-size: 17px;
+  border: 1px solid #DB5461;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+  border-radius: 3px;
+}
+form.search-form-input::after {
+  content: "";
+  clear: both;
+  display: table;
 }

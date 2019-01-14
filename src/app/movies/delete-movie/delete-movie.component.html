@@ -1,14 +1,16 @@
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Delete Movie?</h4>
+    <h4 class="modal-title" id="modal-basic-title" style="color: #404040;">Delete Movie?</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
     <form [formGroup]="movieForm" (ngSubmit)="onSubmit(); modal.dismiss('saved')">
-        <button type="submit" class="btn btn-success">OK</button>
-        <button type="button" class="btn btn-danger" (click)="modal.dismiss('canceled')">Cancel</button>
+      <div class="buttons-form-div">
+        <button type="button" class="movie-btn-cancel" (click)="modal.dismiss('canceled')">Cancel</button>
+        <button type="submit" class="movie-btn-ok">OK</button>
+      </div>
     </form>
   </div>
 
