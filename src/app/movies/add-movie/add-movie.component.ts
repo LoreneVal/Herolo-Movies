@@ -11,11 +11,24 @@ import { MovieService } from '../movie.service';
 export class AddMovieComponent implements OnInit {
   //editMode = false;
   movieForm: FormGroup;
+  errorForm = new FormControl;
 
   constructor(private modalService: NgbModal, private movieService: MovieService) {}
 
   ngOnInit() {
-
+    this.movieForm = new FormGroup({
+      'imdbID': new FormControl(this.movieService.generateId()),
+      'title': new FormControl(null, Validators.required),
+      'year': new FormControl(null, [
+                                Validators.required,
+                                Validators.max(2019),
+                                Validators.pattern('[0-9]{4}')
+                              ]),
+      'runtime': new FormControl(null, Validators.required),
+      'genre': new FormControl(null, Validators.required),
+      'director': new FormControl(null, Validators.required),
+      'poster': new FormControl(null)
+    });
   }
 
   onSubmit() {
@@ -24,21 +37,45 @@ export class AddMovieComponent implements OnInit {
   }
   closeResult: string;
 
+  getErrorMessage() {
+    if(!this.movieForm.get('title').valid) {
+      return 'Please enter a title';
+    }
+    if(!this.movieForm.get('year').valid) {
+      if(this.movieForm.get('year').value > 2019) {
+        return 'please enter a year previous to 2019'
+      } else {
+        return 'Please enter a valid year (yyyy)';
+      }
+    }
+    if(!this.movieForm.get('runtime').valid) {
+      return'Please enter a runtime';
+    }
+    if(!this.movieForm.get('genre').valid) {
+      return 'Please select a genre';
+    }
+    if(!this.movieForm.get('director').valid) {
+      return 'Please enter a director';
+    }
+
+  }
+
+
+    openErr(errorpopup) {
+      this.modalService.open(errorpopup, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+    }
+
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
-    this.movieForm = new FormGroup({
-      'imdbID': new FormControl(this.movieService.generateId()),
-      'title': new FormControl(null, Validators.required),
-      'year': new FormControl(null),
-      'runtime': new FormControl(null),
-      'genre': new FormControl(null),
-      'director': new FormControl(null),
-      'poster': new FormControl(null)
-    });
+
   }
 
   private getDismissReason(reason: any): string {

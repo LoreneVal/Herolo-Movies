@@ -1,3 +1,18 @@
+<ng-template #errorpopup let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{getErrorMessage()}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="errorForm" (ngSubmit)="modal.dismiss('saved')">
+        <button type="submit" class="btn btn-success">OK</button>
+    </form>
+  </div>
+
+</ng-template>
+
 <ng-template #content let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Add a Movie</h4>
@@ -85,7 +100,12 @@
           formControlName="poster">
         </div>
       </div>
-        <button type="submit" class="btn btn-success">Save</button>
+        <div *ngIf="movieForm.valid">
+          <button type="submit" class="btn btn-success">Save</button>
+        </div>
+        <div *ngIf="!movieForm.valid">
+          <button type="button" class="btn btn-success" (click)="open(errorpopup)">Save</button>
+        </div>
         <button type="button" class="btn btn-danger" (click)="modal.dismiss('canceled')">Cancel</button>
     </form>
   </div>

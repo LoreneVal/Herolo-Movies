@@ -10,15 +10,6 @@ import { MovieService } from '../movie.service';
 export class MovieItemComponent implements OnInit {
   @Input() movie: Movie;
   index: number;
-  constructor(private movieService: MovieService) { }
-
   ngOnInit() {
   }
-
-  onDelete() {
-    console.log(this.movieService.seeMovies())
-    this.index = this.movieService.findIndexByID(this.movie.imdbID);
-    this.movieService.deleteMovie(this.index);
-  }
-
 }

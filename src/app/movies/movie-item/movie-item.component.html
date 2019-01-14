@@ -14,7 +14,8 @@
       <div class="row">
         <div class="col-12">
           <app-movie-edit [movie]="movie"></app-movie-edit>
-          <button class="movie-btn" type="button" (click)="onDelete()"><i class="fas fa-trash-alt"></i></button>
+          <app-delete-movie [movie]="movie"></app-delete-movie>
+          <!--<button class="movie-btn" type="button" (click)="onDelete()"><i class="fas fa-trash-alt"></i></button>-->
         </div>
       </div>
     </div>
