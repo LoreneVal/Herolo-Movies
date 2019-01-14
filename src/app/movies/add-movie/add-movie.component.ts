@@ -3,7 +3,6 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MovieService } from '../movie.service';
 
-
 @Component({
   selector: 'app-add-movie',
   templateUrl: './add-movie.component.html',
@@ -21,6 +20,7 @@ export class AddMovieComponent implements OnInit {
 
   onSubmit() {
     this.movieService.addMovie(this.movieForm.value);
+    console.log(this.movieService.movies)
   }
   closeResult: string;
 
@@ -31,7 +31,7 @@ export class AddMovieComponent implements OnInit {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
     this.movieForm = new FormGroup({
-      'imdbID': new FormControl({value: this.movieService.generateId(), disabled: true}),
+      'imdbID': new FormControl(this.movieService.generateId()),
       'title': new FormControl(null, Validators.required),
       'year': new FormControl(null),
       'runtime': new FormControl(null),

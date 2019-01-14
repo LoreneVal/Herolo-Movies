@@ -26,6 +26,8 @@ export class MovieEditComponent implements OnInit {
   onSubmit() {
     this.index = this.movieService.findIndexByID(this.movie.imdbID);
     this.movieService.updateMovie(this.index, this.movieForm.value);
+    console.log(this.index);
+    console.log(this.movieService.movies)
   }
   closeResult: string;
 
@@ -35,8 +37,9 @@ export class MovieEditComponent implements OnInit {
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
+
     this.movieForm = new FormGroup({
-      'imdbID': new FormControl({value: this.movie.imdbID, disabled: true}),
+      'imdbID': new FormControl(this.movie.imdbID),
       'title': new FormControl(this.movie.title, Validators.required),
       'year': new FormControl(this.movie.year),
       'runtime': new FormControl(this.movie.runtime),
@@ -44,6 +47,7 @@ export class MovieEditComponent implements OnInit {
       'director': new FormControl(this.movie.director),
       'poster': new FormControl(this.movie.poster)
     });
+
   }
 
   private getDismissReason(reason: any): string {

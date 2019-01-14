@@ -21,7 +21,7 @@ export class MovieService {
 
   addMovie(movie: Movie) {
     this.movies.push(movie);
-    //this.moviesChanged.emit(this.movies);
+    this.moviesChanged.emit(this.movies);
   }
 
   findIndexByID(imdbID: string) {

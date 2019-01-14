@@ -1,0 +1,13 @@
+.movie-btn {
+  border: 1px solid #DB5461;
+  background-color: white;
+  padding: 5px 20px;
+  color: #DB5461;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.movie-btn:hover {
+  background-color: #DB5461;
+  color: white;
+}

@@ -13,6 +13,7 @@ import { AddMovieComponent } from './movies/add-movie/add-movie.component';
 
 import { MovieService } from './movies/movie.service';
 import { DataStorageService } from './shared/data-storage.service';
+import { MovieFormComponent } from './movies/movie-form/movie-form.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { DataStorageService } from './shared/data-storage.service';
     MovieItemComponent,
     MovieEditComponent,
     AddMovieComponent,
+    MovieFormComponent,
   ],
   imports: [
     BrowserModule,

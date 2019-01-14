@@ -30,16 +30,17 @@ export class MoviesComponent implements OnInit {
         this.movies = movies;
       }
     );
+    console.log(this.movieService.movies);
   }
 
   onSearchSubmit() {
     this.hasSearch = true;
-    this.dataStorageService.fetchMovies(this.searchForm.value);
     this.movieService.moviesChanged.subscribe(
       (movies: Movie[]) => {
         this.movies = movies;
       }
     );
+    this.dataStorageService.fetchMovies(this.searchForm.value);
     this.error = this.dataStorageService.error;
     console.log(this.movieService.movies);
   }

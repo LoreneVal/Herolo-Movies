@@ -12,17 +12,18 @@
     <app-add-movie></app-add-movie>
   </div>
 </div>
+
 <div *ngIf="!hasSearch; else searchResult">
-  <div *ngFor="let movieItem of movies">
+  <div class="row" *ngFor="let movieItem of movies">
+    <div class="col-12">
     <app-movie-item [movie]="movieItem"></app-movie-item>
+    </div>
   </div>
  </div>
- <div *ngFor="let movieItem of addedMovies">
+ <!--<div *ngFor="let movieItem of addedMovies">
     <app-movie-item [movie]="movieItem"></app-movie-item>
-</div>
+</div>-->
 
 <ng-template #searchResult>
-
-    <app-movie-item [movie]="movies" *ngIf="error == ''"></app-movie-item>
-
+    <app-movie-item [movie]="movies"></app-movie-item>
 </ng-template>
