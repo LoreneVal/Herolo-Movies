@@ -12,18 +12,13 @@ import { DataStorageService } from '../shared/data-storage.service';
 })
 export class MoviesComponent implements OnInit {
   movies: Movie[];
-  addedMovies: Movie[];
   searchForm = new FormControl('');
-  searchResults: Movie[] = [];
-  hasSearch = false;
   error = '';
 
-  noMovieFound = false;
 
   constructor(private movieService: MovieService, private dataStorageService: DataStorageService){}
 
   ngOnInit() {
-    this.hasSearch = false;
     this.dataStorageService.fetchMovies();
     this.movieService.moviesChanged.subscribe(
       (movies: Movie[]) => {
@@ -34,14 +29,20 @@ export class MoviesComponent implements OnInit {
   }
 
   onSearchSubmit() {
-    this.hasSearch = true;
+    this.dataStorageService.fetchMoviesWithInfo(this.searchForm.value);
     this.movieService.moviesChanged.subscribe(
       (movies: Movie[]) => {
         this.movies = movies;
       }
     );
-    this.dataStorageService.fetchMovies(this.searchForm.value);
-    this.error = this.dataStorageService.error;
-    console.log(this.movieService.movies);
+    console.log(this.movies.length)
+    console.log(this.movies)
+    if(this.movies.length == 0) {
+      this.error = '0 results found';
+    }
+    console.log(this.dataStorageService.error)
+    console.log(this.error);
+
+
   }
 }
