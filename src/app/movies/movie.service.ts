@@ -1,14 +1,15 @@
 import { Movie } from './movie.model';
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class MovieService {
   movies: Movie[] = [];
-  moviesChanged = new EventEmitter<Movie[]>();
+  moviesChanged = new Subject<Movie[]>();
 
   setMovies(movies: Movie[]) {
     this.movies = movies;
-    this.moviesChanged.emit(this.movies);
+    this.moviesChanged.next(this.movies);
   }
 
   seeMovies() {
@@ -21,7 +22,7 @@ export class MovieService {
 
   addMovie(movie: Movie) {
     this.movies.push(movie);
-    this.moviesChanged.emit(this.movies);
+    this.moviesChanged.next(this.movies);
   }
 
   findIndexByID(imdbID: string) {
@@ -34,12 +35,12 @@ export class MovieService {
 
   updateMovie(index: number, newMovie: Movie) {
     this.movies[index] = newMovie;
-    this.moviesChanged.emit(this.movies);
+    this.moviesChanged.next(this.movies);
   }
 
   deleteMovie(index: number) {
     this.movies.splice(index, 1);
-    this.moviesChanged.emit(this.movies);
+    this.moviesChanged.next(this.movies);
   }
 
 
