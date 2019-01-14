@@ -13,7 +13,6 @@ import { AddMovieComponent } from './movies/add-movie/add-movie.component';
 
 import { MovieService } from './movies/movie.service';
 import { DataStorageService } from './shared/data-storage.service';
-import { MovieFormComponent } from './movies/movie-form/movie-form.component';
 import { DeleteMovieComponent } from './movies/delete-movie/delete-movie.component';
 
 
@@ -25,8 +24,7 @@ import { DeleteMovieComponent } from './movies/delete-movie/delete-movie.compone
     MovieItemComponent,
     MovieEditComponent,
     AddMovieComponent,
-    MovieFormComponent,
-    DeleteMovieComponent,
+    DeleteMovieComponent
   ],
   imports: [
     BrowserModule,
