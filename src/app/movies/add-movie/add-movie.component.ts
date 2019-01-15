@@ -9,7 +9,6 @@ import { MovieService } from '../movie.service';
   styleUrls: ['./add-movie.component.css']
 })
 export class AddMovieComponent implements OnInit {
-  //editMode = false;
   addMovieForm: FormGroup;
   errorForm = new FormControl;
 
@@ -18,7 +17,7 @@ export class AddMovieComponent implements OnInit {
   ngOnInit() {
     this.addMovieForm = new FormGroup({
       'imdbID': new FormControl(this.movieService.generateId()),
-      'title': new FormControl(null, Validators.required),
+      'title': new FormControl(null, [Validators.required, this.isExistingTitle.bind(this)]),
       'year': new FormControl(null, [
                                 Validators.required,
                                 Validators.max(2019),
@@ -29,21 +28,25 @@ export class AddMovieComponent implements OnInit {
       'director': new FormControl(null, Validators.required),
       'poster': new FormControl(null)
     });
+
+    this.addMovieForm.statusChanges.subscribe(
+      (status) => console.log(status)
+    );
   }
 
   onSubmit() {
     this.movieService.addMovie(this.addMovieForm.value);
-    this.ngOnInit()
+    this.ngOnInit();
   }
   closeResult: string;
 
   getErrorMessage() {
     if(!this.addMovieForm.get('title').valid) {
-      //if(this.addMovieForm.get('title').value == '') {
+      if(this.addMovieForm.get('title').errors['required']) {
         return 'Please enter a title';
-      //} else {
-        //return 'This movie already exists, please enter another title';
-      //}
+      } else {
+        return 'This movie already exists, please enter another title';
+      }
     }
     if(!this.addMovieForm.get('year').valid) {
       if(this.addMovieForm.get('year').value > 2019) {
@@ -63,14 +66,17 @@ export class AddMovieComponent implements OnInit {
     }
 
   }
-  //isExistingTitle(control: FormControl): {[s: string]: boolean} {
-    //for(let i = 0; i < this.movieService.movies.length; i++) {
-      //if(control.value == this.movieService.movies[i]['title']) {
-        //return {existingTitle: true};
-      //}
-    //}
-    //return null;
-  //}
+  isExistingTitle(control: FormControl): {[s: string]: boolean} {
+    console.log(control.value != null)
+    if(control.value != null) {
+      for(let i = 0; i < this.movieService.movies.length; i++) {
+        if(control.value.toUpperCase() == this.movieService.movies[i]['title'].toUpperCase()) {
+          return {existingTitle: true};
+        }
+    }
+  }
+  return null;
+  }
 
   openErr(errorpopup) {
     this.modalService.open(errorpopup, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
