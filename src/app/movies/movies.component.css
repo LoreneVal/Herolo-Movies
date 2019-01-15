@@ -1,9 +1,13 @@
 .search-form {
-  width: 75vw;
-  margin-top: 5vh;
-  margin-bottom: 5vh;
+  width: 65vw;
+  margin: 4vh auto;
   display: flex;
   justify-content: space-between;
+}
+@media (max-width: 992px) {
+    .search-form {
+      width: 90vw;
+    }
 }
 form.search-form-input input[type=text] {
   padding: 10px;

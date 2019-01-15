@@ -1,19 +1,52 @@
 .movies-wrapper {
   display: flex;
   justify-content: center;
-  background-color: #EFEFEF;
+  background-color: white;
   height: 100vh;
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
 }
 .movies-container {
-  width: 80vw;
-  background-color: #EFEFEF;
+  width: 70vw;
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
-  border-right: 3px solid #DB5461;
-  border-left: 3px solid #DB5461;
-  box-shadow: 0 4px 8px 0 rgba(219, 84, 97, 0.5);
+  background-color: #EFEFEF;
+  -webkit-overflow-scrolling: touch;
+}
+@media (max-width: 992px) {
+    .movies-container {
+      width: 100vw;
+    }
+}
+.navbar-wrapper {
+  background-color: white;
+  height: 100%;
+}
+.movies-navbar {
+  width: 70%;
+  height: 7vh;
+  margin: 0 auto;
+  background-color: #DB5461;
+  color: white;
+  display: flex;
+  border-radius: 5px;
+}
+@media (max-width: 992px) {
+    .movies-navbar {
+      width: 100vw;
+    }
+}
+.movies-navbar h1 {
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  margin: auto 3vw;
+}
+.movies-navbar i {
+  font-size: 24px;
+  margin: auto 1vw;
 }
 @media (max-width: 992px) {
   .movies-container {
