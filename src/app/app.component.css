@@ -6,8 +6,7 @@
   overflow: scroll;
 }
 .movies-container {
-  margin: 0 10vw;
-  padding: 50px;
+  width: 80vw;
   background-color: #EFEFEF;
   overflow: scroll;
   border-right: 3px solid #DB5461;
