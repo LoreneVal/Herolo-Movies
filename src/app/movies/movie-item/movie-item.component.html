@@ -1,5 +1,5 @@
 <div class="row movie-container">
-    <div class="col-12 col-md-3">
+    <div class="col-12 col-md-3 col-centered">
       <img [src]="movie.poster" alt="{{movie.title}}" class="img-responsive"
             style="max-height: 200px; border-radius: 3px; max-width: 130px;">
     </div>
@@ -12,7 +12,7 @@
         <p id="genre">{{movie.genre}}</p>
       </div>
       <div class="row">
-        <div class="col-12">
+        <div class="col-12 movie-options">
           <app-movie-edit [movie]="movie"></app-movie-edit>
           <app-delete-movie [movie]="movie"></app-delete-movie>
         </div>
