@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { MoviesComponent } from './movies/movies.component';
-import { HeaderComponent } from './header/header.component';
 import { MovieItemComponent } from './movies/movie-item/movie-item.component';
 import { MovieEditComponent } from './movies/movie-edit/movie-edit.component';
 import { AddMovieComponent } from './movies/add-movie/add-movie.component';
@@ -21,7 +20,6 @@ import { MovieTitlePipe } from './movies/movie-title.pipe';
   declarations: [
     AppComponent,
     MoviesComponent,
-    HeaderComponent,
     MovieItemComponent,
     MovieEditComponent,
     AddMovieComponent,
