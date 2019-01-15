@@ -14,3 +14,14 @@
   border-left: 3px solid #DB5461;
   box-shadow: 0 4px 8px 0 rgba(219, 84, 97, 0.5);
 }
+@media (max-width: 992px) {
+  .movies-container {
+    margin: 0px;
+    padding: 0px;
+    background-color: #EFEFEF;
+    overflow: scroll;
+    border-right: none;
+    border-left: none;
+    box-shadow: none;
+  }
+}
