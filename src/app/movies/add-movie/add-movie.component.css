@@ -18,6 +18,7 @@
     border: 1px solid #DB5461;
     border-radius: 5px;
     float: right;
+    padding: 7px 12px;
   }
 }
 @media screen and (max-width:992px) {
