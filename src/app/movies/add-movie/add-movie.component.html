@@ -1,6 +1,6 @@
 <ng-template #errorpopup let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">{{getErrorMessage()}}</h4>
+    <h4 class="modal-title" id="modal-basic-title" style="color: #404040;">{{getErrorMessage()}}</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -12,7 +12,7 @@
   </div>
 </ng-template>
 
-<ng-template #content let-modal>
+<ng-template #addcontent let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title" style="color: #404040;">Add a Movie</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -20,7 +20,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <form [formGroup]="movieForm" (ngSubmit)="onSubmit(); modal.dismiss('saved')">
+    <form [formGroup]="addMovieForm" (ngSubmit)="onSubmit(); modal.dismiss('saved')">
       <div class="form-group">
         <label for="imdbID">ID</label>
         <div class="input-group">
@@ -66,15 +66,19 @@
         <label for="genre">Genre</label>
         <div class="input-group">
           <select
-            class="form-controle"
+            class="form-control"
             type="text"
             id="genre"
             formControlName="genre">
-            <option value="drama">Drama</option>
-            <option value="sci-fi">Sci-fi</option>
+            <option value="drama">Action</option>
             <option value="biography">Biography</option>
+            <option value="drama">Comedy</option>
             <option value="crime">Crime</option>
+            <option value="drama">Drama</option>
+            <option value="drama">Horror</option>
             <option value="romance">Romance</option>
+            <option value="sci-fi">Sci-fi</option>
+            <option value="drama">Thriller</option>
           </select>
         </div>
       </div>
@@ -100,11 +104,11 @@
         </div>
       </div>
       <div class="buttons-form-div">
-        <button type="button" class="movie-btn" (click)="modal.dismiss('canceled')">Cancel</button>
-        <div *ngIf="movieForm.valid">
+        <button type="button" class="movie-btn-cancel" (click)="modal.dismiss('canceled')">Cancel</button>
+        <div *ngIf="addMovieForm.valid">
           <button type="submit" class="movie-btn-ok">Save</button>
         </div>
-        <div *ngIf="!movieForm.valid">
+        <div *ngIf="!addMovieForm.valid">
           <button type="button" class="movie-btn-ok" (click)="open(errorpopup)">Save</button>
         </div>
 
@@ -114,4 +118,5 @@
   </div>
 </ng-template>
 
-<button class="movie-btn" (click)="open(content)">+ Add a movie</button>
+<button class="movie-btn" (click)="open(addcontent)"><i class="fas fa-plus"></i> Add a movie</button>
+<button class="mobile-movie-btn" (click)="open(addcontent)"><i class="fas fa-plus"></i></button>

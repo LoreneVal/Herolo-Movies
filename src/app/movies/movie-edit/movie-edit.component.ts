@@ -12,7 +12,6 @@ import { MovieService } from '../movie.service';
 })
 export class MovieEditComponent implements OnInit {
 
-  //editMode = false;
   errorForm = new FormControl;
   movieForm: FormGroup;
   index: number;
@@ -27,10 +26,7 @@ export class MovieEditComponent implements OnInit {
       'year': new FormControl(this.movie.year, [
                                 Validators.required,
                                 Validators.max(2019),
-                                Validators.pattern('[0-9]{4}')
-                              ]
-                            ),
-
+                                Validators.pattern('[0-9]{4}')]),
       'runtime': new FormControl(this.movie.runtime, Validators.required),
       'genre': new FormControl(this.movie.genre, Validators.required),
       'director': new FormControl(this.movie.director, Validators.required),
@@ -41,13 +37,18 @@ export class MovieEditComponent implements OnInit {
   onSubmit() {
     this.index = this.movieService.findIndexByID(this.movie.imdbID);
     this.movieService.updateMovie(this.index, this.movieForm.value);
+    this.ngOnInit();
   }
   closeResult: string;
 
 
 getErrorMessage() {
   if(!this.movieForm.get('title').valid) {
-    return 'Please enter a title';
+  //  if(this.movieForm.get('title').value == '') {
+      return 'Please enter a title';
+    //} else {
+      //return 'This movie already exists, please enter another title';
+    //}
   }
   if(!this.movieForm.get('year').valid) {
     if(this.movieForm.get('year').value > 2019) {
@@ -68,7 +69,14 @@ getErrorMessage() {
 
 }
 
-
+//isExistingTitle(control: FormControl): {[s: string]: boolean} {
+  //for(let i = 0; i < this.movieService.movies.length; i++) {
+    //if(control.value == this.movieService.movies[i]['title']) {
+      //return {existingTitle: true};
+    //}
+  //}
+  //return null;
+//}
   openErr(errorpopup) {
     this.modalService.open(errorpopup, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;

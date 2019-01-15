@@ -6,7 +6,7 @@
 
     <div class="col-12 col-md-9">
       <div class="movie-details">
-        <h1>{{movie.title}} ({{movie.year}})</h1>
+        <h1>{{movie.title | removeSpecialChar | titlecase}} ({{movie.year}})</h1>
         <p><em>{{movie.director}}</em></p>
         <p id="runtime">{{movie.runtime}}</p>
         <p id="genre">{{movie.genre}}</p>
@@ -19,11 +19,3 @@
       </div>
     </div>
 </div>
-
-
-    <!--  <div class="movie-card">
-        <img [src]="movie.poster" alt="{{movie.title}}" style="width:100%">
-        <h4><b>John Doe</b></h4>
-        <p>Architect & Engineer</p>
-
-      </div>-->

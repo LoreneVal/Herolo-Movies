@@ -21,7 +21,7 @@ export class MovieService {
   }
 
   addMovie(movie: Movie) {
-    this.movies.push(movie);
+    this.movies.unshift(movie);
     this.moviesChanged.next(this.movies);
   }
 

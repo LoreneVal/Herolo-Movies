@@ -1,10 +1,10 @@
 .search-form {
   width: 75vw;
-  margin-bottom: 10px;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
   display: flex;
   justify-content: space-between;
 }
-
 form.search-form-input input[type=text] {
   padding: 10px;
   font-size: 17px;
@@ -23,7 +23,7 @@ form.search-form-input button {
   color: white;
   font-size: 17px;
   border: 1px solid #DB5461;
-  border-left: none; /* Prevent double borders */
+  border-left: none;
   cursor: pointer;
   border-radius: 3px;
 }
