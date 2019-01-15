@@ -9,8 +9,10 @@
       width: 90vw;
     }
 }
+.centered {
+  padding: 0px;
+}
 form.search-form-input input[type=text] {
-  padding: 10px;
   font-size: 17px;
   border: 1px solid #DB5461;
   float: left;

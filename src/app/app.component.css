@@ -22,6 +22,10 @@
   background-color: white;
   height: 100%;
 }
+.footer-wrapper {
+  height: 80%;
+
+}
 .movies-navbar {
   width: 70%;
   height: 7vh;
@@ -36,6 +40,31 @@
       width: 100vw;
     }
 }
+.movies-footer {
+  width: 70%;
+  height: 4vh;
+  margin: 0 auto;
+  background-color: #DB5461;
+  color: #EFEFEF;
+  display: flex;
+  border-radius: 1px;
+  justify-content: flex-end;
+  padding-right: 2vw;
+  padding-top: 5px;
+}
+@media (max-width: 992px) {
+    .movies-footer {
+      width: 100vw;
+    }
+}
+.movies-footer p {
+  color: #dee2e6;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 100;
+  float: right;
+}
+
 .movies-navbar h1 {
   font-weight: 100;
   text-transform: uppercase;
