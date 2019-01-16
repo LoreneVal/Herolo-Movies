@@ -4,6 +4,7 @@ body {
 }
 .modal {
 margin-top: 55px;
+z-index: 10040;
 }
 
 .modal-dialog{
@@ -13,6 +14,6 @@ margin-top: 55px;
     height: 600px;
     overflow-y: auto;
 }
-#modal-delete-body {
+#modal-short-body {
   height: 70px;
 }

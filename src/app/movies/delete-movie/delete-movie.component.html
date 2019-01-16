@@ -5,7 +5,7 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body" id="modal-delete-body">
+  <div class="modal-body" id="modal-short-body">
     <form [formGroup]="movieForm" (ngSubmit)="onSubmit(); modal.dismiss('saved')">
       <div class="buttons-form-div">
         <button type="button" class="movie-btn-cancel" (click)="modal.dismiss('canceled')">Cancel</button>

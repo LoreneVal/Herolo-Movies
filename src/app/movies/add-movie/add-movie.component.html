@@ -5,7 +5,7 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body">
+  <div class="modal-body" id="modal-short-body">
     <form [formGroup]="errorForm" (ngSubmit)="modal.dismiss('saved')">
         <button type="submit" class="btn btn-success">OK</button>
     </form>
