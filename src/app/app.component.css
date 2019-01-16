@@ -27,7 +27,7 @@
 
 }
 .movies-navbar {
-  width: 70%;
+  width: 70vw;
   height: 7vh;
   margin: 0 auto;
   background-color: #DB5461;
@@ -41,7 +41,7 @@
     }
 }
 .movies-footer {
-  width: 70%;
+  width: 70vw;
   height: 4vh;
   margin: 0 auto;
   background-color: #DB5461;

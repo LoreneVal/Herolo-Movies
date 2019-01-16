@@ -4,7 +4,6 @@ import { FormGroup, FormControl, Validators, ValidationErrors } from '@angular/f
 import { Movie } from '../movie.model';
 import { MovieService } from '../movie.service';
 
-
 @Component({
   selector: 'app-movie-edit',
   templateUrl: './movie-edit.component.html',
