@@ -66,11 +66,12 @@ export class AddMovieComponent implements OnInit {
     }
 
   }
+  //Custom validator for existing title error
   isExistingTitle(control: FormControl): {[s: string]: boolean} {
     console.log(control.value != null)
     if(control.value != null) {
       for(let i = 0; i < this.movieService.movies.length; i++) {
-        if(control.value.toUpperCase().replace(' ','') == this.movieService.movies[i]['title'].toUpperCase().replace(' ','')) {
+        if(control.value.toUpperCase().replace(/\s+/g, '').replace(/[^\w\s]/gi, '') == this.movieService.movies[i]['title'].toUpperCase().replace(/\s+/g, '').replace(/[^\w\s]/gi, '')) {
           return {existingTitle: true};
         }
     }
@@ -78,6 +79,7 @@ export class AddMovieComponent implements OnInit {
   return null;
   }
 
+  //modal for popup error message
   openErr(errorpopup) {
     this.modalService.open(errorpopup, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;

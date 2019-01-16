@@ -70,17 +70,18 @@ getErrorMessage() {
     return 'Please enter a director';
   }
 }
-
+  //Custom validator for existing title error
 isExistingTitle(control: FormControl): {[s: string]: boolean} {
 
     for(let i = 0; i < this.movieService.movies.length; i++) {
-      if(control.value.toUpperCase() == this.movieService.movies[i]['title'].toUpperCase()) {
+      if(control.value.toUpperCase().replace(/\s+/g, '').replace(/[^\w\s]/gi, '') == this.movieService.movies[i]['title'].toUpperCase().replace(/\s+/g, '').replace(/[^\w\s]/gi, '')) {
         return {existingTitle: true};
       }
     }
 
   return null;
 }
+  //modal for error popup message
   openErr(errorpopup) {
     this.modalService.open(errorpopup, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
