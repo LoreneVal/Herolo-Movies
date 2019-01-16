@@ -22,10 +22,7 @@
 }
 .navbar-wrapper {
   background-color: white;
-  z-index: 9999;
-  top: 0;
-  left: 0;
-  position: sticky;
+
 }
 
 .footer-wrapper {

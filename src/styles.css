@@ -2,18 +2,3 @@
 body {
   position: relative;
 }
-.modal {
-margin-top: 55px;
-z-index: 10040;
-}
-
-.modal-dialog{
-    overflow-y: initial !important
-}
-.modal-body{
-    height: 600px;
-    overflow-y: auto;
-}
-#modal-short-body {
-  height: 70px;
-}
