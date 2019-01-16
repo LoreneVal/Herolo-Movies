@@ -70,7 +70,7 @@ export class AddMovieComponent implements OnInit {
     console.log(control.value != null)
     if(control.value != null) {
       for(let i = 0; i < this.movieService.movies.length; i++) {
-        if(control.value.toUpperCase() == this.movieService.movies[i]['title'].toUpperCase()) {
+        if(control.value.toUpperCase().replace(' ','') == this.movieService.movies[i]['title'].toUpperCase().replace(' ','')) {
           return {existingTitle: true};
         }
     }

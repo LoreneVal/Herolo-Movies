@@ -5,6 +5,9 @@
   height: 100vh;
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .movies-container {
   width: 70vw;
@@ -33,7 +36,6 @@
   background-color: #DB5461;
   color: white;
   display: flex;
-  border-radius: 5px;
 }
 @media (max-width: 992px) {
     .movies-navbar {
