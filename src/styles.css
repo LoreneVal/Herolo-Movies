@@ -2,3 +2,17 @@
 body {
   position: relative;
 }
+.modal {
+margin-top: 55px;
+}
+
+.modal-dialog{
+    overflow-y: initial !important
+}
+.modal-body{
+    height: 600px;
+    overflow-y: auto;
+}
+#modal-delete-body {
+  height: 70px;
+}
